@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn7 = (Button) findViewById(R.id.btn7);
         btn8 = (Button) findViewById(R.id.btn8);
         btn9 = (Button) findViewById(R.id.btn9);
-        btnX = (Button) findViewById(R.id.btn7);
-        btnN = (Button) findViewById(R.id.btn8);
-        btnP = (Button) findViewById(R.id.btn9);
+        btnX = (Button) findViewById(R.id.btnX);
+        btnN = (Button) findViewById(R.id.btnN);
+        btnP = (Button) findViewById(R.id.btnP);
         btnplus = (Button) findViewById(R.id.btnplus);
         btnequal = (Button) findViewById(R.id.btnequal);
 
@@ -98,13 +98,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pressedNumber(9);
                 break;
             case R.id.btnX:
-                txtresult.setText("x");
+                pressedX();
                 break;
             case R.id.btnN:
-                txtresult.setText("/");
+                pressedN();
                 break;
             case R.id.btnP:
-                txtresult.setText("%");
+                pressedP();
                 break;
             case R.id.btnplus:
                 pressedPlus();
@@ -147,6 +147,72 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    private void pressedP(){
+        if(isSavedNumber){
+            int CurrentNumber = Integer.parseInt(txtresult.getText().toString());
+            switch (op){
+                case '/':
+                    resultnumber = resultnumber / CurrentNumber;
+                    txtresult.setText(resultnumber + "");
+                    op = '/';
+                    isPressedOp = true;
+                    isSavedNumber = true;
+                    isPressedNumber = false;
+                    break;
+            }
+        } else {
+            resultnumber = Integer.parseInt(txtresult.getText().toString());
+            isSavedNumber = true;
+            op = '/';
+            isPressedOp = true;
+            isPressedNumber = false;
+        }
+    }
+
+    private void pressedN(){
+        if(isSavedNumber){
+            int CurrentNumber = Integer.parseInt(txtresult.getText().toString());
+            switch (op){
+                case '%':
+                    resultnumber = resultnumber % CurrentNumber;
+                    txtresult.setText(resultnumber + "");
+                    op = '%';
+                    isPressedOp = true;
+                    isSavedNumber = true;
+                    isPressedNumber = false;
+                    break;
+            }
+        } else {
+            resultnumber = Integer.parseInt(txtresult.getText().toString());
+            isSavedNumber = true;
+            op = '%';
+            isPressedOp = true;
+            isPressedNumber = false;
+        }
+    }
+
+    private void pressedX(){
+        if(isSavedNumber){
+            int CurrentNumber = Integer.parseInt(txtresult.getText().toString());
+            switch (op){
+                case '*':
+                    resultnumber = resultnumber * CurrentNumber;
+                    txtresult.setText(resultnumber + "");
+                    op = '*';
+                    isPressedOp = true;
+                    isSavedNumber = true;
+                    isPressedNumber = false;
+                    break;
+            }
+        } else {
+            resultnumber = Integer.parseInt(txtresult.getText().toString());
+            isSavedNumber = true;
+            op = '*';
+            isPressedOp = true;
+            isPressedNumber = false;
+        }
+    }
+
     private void pressedAC(){
         isPressedOp = false;
         isSavedNumber = false;
@@ -158,7 +224,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(isSavedNumber && isPressedOp){
             switch (op){
                 case '+':
-                    resultnumber = resultnumber+Integer.parseInt(txtresult.getText().toString());
+                    resultnumber = resultnumber + Integer.parseInt(txtresult.getText().toString());
+                    isSavedNumber = true;
+                    isPressedOp = true;
+                    isPressedNumber = false;
+                    txtresult.setText(resultnumber + "");
+                    break;
+                case '/':
+                    resultnumber = resultnumber / Integer.parseInt(txtresult.getText().toString());
+                    isSavedNumber = true;
+                    isPressedOp = true;
+                    isPressedNumber = false;
+                    txtresult.setText(resultnumber + "");
+                    break;
+                case '%':
+                    resultnumber = resultnumber % Integer.parseInt(txtresult.getText().toString());
+                    isSavedNumber = true;
+                    isPressedOp = true;
+                    isPressedNumber = false;
+                    txtresult.setText(resultnumber + "");
+                    break;
+                case '*':
+                    resultnumber = resultnumber * Integer.parseInt(txtresult.getText().toString());
                     isSavedNumber = true;
                     isPressedOp = true;
                     isPressedNumber = false;
