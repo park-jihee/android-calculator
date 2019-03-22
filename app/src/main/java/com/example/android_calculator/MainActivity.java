@@ -151,28 +151,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(isSavedNumber){
             int CurrentNumber = Integer.parseInt(txtresult.getText().toString());
             switch (op){
-                case '/':
-                    resultnumber = resultnumber / CurrentNumber;
-                    txtresult.setText(resultnumber + "");
-                    op = '/';
-                    isPressedOp = true;
-                    isSavedNumber = true;
-                    isPressedNumber = false;
-                    break;
-            }
-        } else {
-            resultnumber = Integer.parseInt(txtresult.getText().toString());
-            isSavedNumber = true;
-            op = '/';
-            isPressedOp = true;
-            isPressedNumber = false;
-        }
-    }
-
-    private void pressedN(){
-        if(isSavedNumber){
-            int CurrentNumber = Integer.parseInt(txtresult.getText().toString());
-            switch (op){
                 case '%':
                     resultnumber = resultnumber % CurrentNumber;
                     txtresult.setText(resultnumber + "");
@@ -186,6 +164,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             resultnumber = Integer.parseInt(txtresult.getText().toString());
             isSavedNumber = true;
             op = '%';
+            isPressedOp = true;
+            isPressedNumber = false;
+        }
+    }
+
+    private void pressedN(){
+        if(isSavedNumber){
+            int CurrentNumber = Integer.parseInt(txtresult.getText().toString());
+            switch (op){
+                case '/':
+                    resultnumber = resultnumber / CurrentNumber;
+                    txtresult.setText(resultnumber + "");
+                    op = '/';
+                    isPressedOp = true;
+                    isSavedNumber = true;
+                    isPressedNumber = false;
+                    break;
+            }
+        } else {
+            resultnumber = Integer.parseInt(txtresult.getText().toString());
+            isSavedNumber = true;
+            op = '/';
             isPressedOp = true;
             isPressedNumber = false;
         }
